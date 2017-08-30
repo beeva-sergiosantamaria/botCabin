@@ -1,0 +1,74 @@
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #000011;
+    font-family: 'Open Sans', sans-serif;
+}
+.legends{
+  position: absolute;
+  bottom: 0%;
+  left: 0;
+  right: 0;
+  width: 950px;
+  height: 5%;
+  top: 95%;
+  margin: auto;
+}
+.legendsGroup{
+	height: 100%;
+	float: left;
+	margin-right: 2%;
+}
+.legendColor{
+	width: 12px;
+	height: 12px;
+	float: left;
+	margin: 2% 0% 2% 2%;
+}
+.legendText{
+  width: 50%;
+  height: 90%;
+  float: left;
+  margin: 2% 0% 2% 7%;
+  font-size: 12px;
+  color: white;
+  font-weight: bold;
+  line-height: 1;
+}
+.Utilities{
+	background-color: #00af23;
+}
+.Health{
+	background-color: #d817b2;
+}
+.Education{
+	background-color: #5100bc;
+}
+.Retail{
+	background-color: #fc0a16;
+}
+.Telecom{
+	background-color: #2834bf;
+}
+.Transport{
+	background-color: #f97a18;
+}
+.Fintech{
+	background-color: #1388b2;
+}
+.Entertainment{
+	background-color: #fcc52f;
+}
+.Information{
+	background-color: #dd5952;
+}
+.Manufacturing{
+	background-color: #91a4d8;
+}
+.Services{
+	background-color: #afea85;
+}
+.Food{
+	background-color: #06129b;
+}
