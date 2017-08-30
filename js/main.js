@@ -15,8 +15,7 @@ $(document).ready(function() {
 button.addEventListener('pointerup', function(event) {
     navigator.bluetooth.requestDevice({
     filters: [{
-      //acceptAllDevices: true,
-      name: 'Vitorba V1'
+      acceptAllDevices: true
     }]
   })
   .then(function(device){ console.log(device.name); return device.gatt.connect();})
