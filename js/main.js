@@ -15,7 +15,7 @@ $(document).ready(function() {
 button.addEventListener('pointerup', function(event) {
     navigator.bluetooth.requestDevice({
     filters: [{
-      acceptAllDevices: true
+      services: ['heart_rate']
     }]
   })
   .then(function(device){ console.log(device.name); return device.gatt.connect();})
