@@ -27,7 +27,7 @@ button.addEventListener('pointerup', function(event) {
                                       handleCharacteristicValueChanged);
       console.log('Notifications have been started.');
     })
-  .catch(function(error) { console.log(error); });
+  .catch(function(error) { console.log('error: '+error); });
 });
 
 function handleCharacteristicValueChanged(event) {
