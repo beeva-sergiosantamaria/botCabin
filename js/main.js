@@ -15,13 +15,27 @@ $(document).ready(function() {
 button.addEventListener('pointerup', function(event) {
     navigator.bluetooth.requestDevice({
     filters: [{
-      //acceptAllDevices: true,
-      name: 'Vitorba V1'
+      services: ['heart_rate']
     }]
   })
   .then(function(device){ console.log(device.name); return device.gatt.connect();})
-  .catch(function(error) { console.log(error); });
+  .then(function(server){ server.getPrimaryService('heart_rate');})
+  .then(function(service){ service.getCharacteristic('heart_rate_measurement');})
+  .then(function(characteristic){characteristic.startNotifications();}) 
+  .then(function(characteristic){
+      characteristic.addEventListener('characteristicvaluechanged',
+                                      handleCharacteristicValueChanged);
+      console.log('Notifications have been started.');
+    })
+  .catch(function(error) { console.log('error: '+error); });
 });
+
+function handleCharacteristicValueChanged(event) {
+  var value = event.target.value;
+  console.log('Received ' + value);
+  // TODO: Parse Heart Rate Measurement value.
+  // See https://github.com/WebBluetoothCG/demos/blob/gh-pages/heart-rate-sensor/heartRateSensor.js
+}
 
 function init(data) {
 
