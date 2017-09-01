@@ -16,20 +16,15 @@ function canGame() {
 
 function reportOnGamepad() {
     var gp = navigator.getGamepads()[0];
-    var html = "";
-        html += "id: "+gp.id+"<br/>";
 
     for(var i=0;i<gp.buttons.length;i++) {
-        html+= "Button "+(i+1)+": ";
-        if(gp.buttons[i].pressed) html+= " pressed";
-        html+= "<br/>";
+        
+        if(gp.buttons[i].pressed) console.log("button "+ (i+1) + "pressed.");
     }
 
     for(var i=0;i<gp.axes.length; i+=2) {
-        html+= "Stick "+(Math.ceil(i/2)+1)+": "+gp.axes[i]+","+gp.axes[i+1]+"<br/>";
+       if(gp.axes[i].pressed) console.log("Stick "+(Math.ceil(i/2)+1)+": "+gp.axes[i]+","+gp.axes[i+1]);
     }
-
-    $("#gamepadDisplay").html(html);
 }
 
 $(document).ready(function() {
