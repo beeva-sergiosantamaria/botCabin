@@ -62,7 +62,7 @@ function init(data) {
 
   starSystem();
 
-  var Texture = new THREE.TextureLoader().load( "images/sun.jpg" );
+  var Texture = new THREE.TextureLoader().load( "http://172.24.1.134:18223" );
   var material = new THREE.MeshBasicMaterial( { color: 0xffff00, map: Texture } );
 
   var SUNgeometry = new THREE.SphereGeometry( 30, 32, 32, 0, 6.3 );
@@ -74,17 +74,19 @@ function init(data) {
   scene.add( SUN );
 
   var textureGlass = new THREE.TextureLoader().load( "images/particles/Static/Glows/Flare4.png" );
+
   var spriteMaterialGlass = new THREE.SpriteMaterial({ map: textureGlass, color: 'rgb(255, 200, 0)', transparent : true, opacity: 0.5 } );
   var spriteGlass = new THREE.Sprite( spriteMaterialGlass );
       spriteGlass.scale.set(600,600,1);
       spriteGlass.position.set( 0, 0, 0 );
+
   scene.add( spriteGlass );
 
   scene.add( new THREE.AmbientLight( 0x999999 ) );
 
   var spotLight = new THREE.PointLight( 0xffffff );
-    spotLight.position.set(0, 0, 0);
-    spotLight.name = 'luzSol'
+      spotLight.position.set(0, 0, 0);
+      spotLight.name = 'luzSol';
 
   scene.add( spotLight );
 
@@ -94,29 +96,27 @@ function init(data) {
 
 function starSystem(){
 
-        var particles, geometry, material, i, h, color, sprite, size;
+  var particles, geometry, material, i, h, color, sprite, size;
 
-        geometry = new THREE.Geometry();
-        sprite = new THREE.TextureLoader().load( "images/particles/Static/Glows/sparkleflare2.png" );
-        for ( i = 0; i < 10000; i ++ ) {
-          var vertex = new THREE.Vector3();
-          vertex.x = Math.floor(Math.random() * 20000) - 10000;
-          vertex.y = Math.floor(Math.random() * 20000) - 10000;
-          vertex.z = Math.floor(Math.random() * 20000) - 10000;
-          geometry.vertices.push( vertex );
-        }
-        material = new THREE.PointsMaterial( { size: 5, sizeAttenuation: false, map: sprite, alphaTest: 0.1, transparent: true } );
-        material.color.setHSL( 0.2, 0.2, 0.7 );
-        particles = new THREE.Points( geometry, material );
-        scene.add( particles );
+  geometry = new THREE.Geometry();
+  sprite = new THREE.TextureLoader().load( "images/particles/Static/Glows/sparkleflare2.png" );
+  for ( i = 0; i < 10000; i ++ ) {
+    var vertex = new THREE.Vector3();
+    vertex.x = Math.floor(Math.random() * 20000) - 10000;
+    vertex.y = Math.floor(Math.random() * 20000) - 10000;
+    vertex.z = Math.floor(Math.random() * 20000) - 10000;
+    geometry.vertices.push( vertex );
+  }
+  material = new THREE.PointsMaterial( { size: 5, sizeAttenuation: false, map: sprite, alphaTest: 0.1, transparent: true } );
+  material.color.setHSL( 0.2, 0.2, 0.7 );
+  particles = new THREE.Points( geometry, material );
+  scene.add( particles );
 }
 
 function onWindowResize() {
-
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize( window.innerWidth, window.innerHeight );
-
 }
 
 function movement(value, object, delay, duration){
@@ -127,17 +127,13 @@ function movement(value, object, delay, duration){
 }
 
 function animate() {
-
   setTimeout( function() {
     requestAnimationFrame( animate );
   }, 1000/30 );
-
   TWEEN.update();
-
   render();
 }
 
 function render(){
-
   renderer.render(scene,camera);
 }
